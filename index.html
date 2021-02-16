@@ -59,6 +59,15 @@
     /*Compass: https://thenounproject.com/search/?q=compass&i=592352*/
   </style>
   <script>
+    const arrow = document.querySelector('.arrow');
+    const speed = document.querySelector('.speed-value');
+
+    // There's also getPosition but that will only give one instance whereas watchPosition will give frequent updates.
+    navigator.geolocation.watchPosition((data)=> {
+      // console.log(data);
+      speed.textContent = data.coords.speed;
+      arrow.style.transform = `rotate(20deg)`;
+    })
   </script>
 </body>
 </html>
